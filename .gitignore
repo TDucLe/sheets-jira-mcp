@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+env/
+google-service-account.json
+*.log
+.DS_Store
+dist/
+*.egg-info/
