@@ -2,8 +2,6 @@
 
 AI Agent sử dụng **Google Gemini** để kết nối **Google Sheets** và **Jira** thông qua **Model Context Protocol (MCP)**.
 
-> Toàn bộ thao tác dữ liệu được xử lý qua MCP — **không pull dữ liệu về RAM**.
-
 ---
 
 ## 📋 Yêu cầu hệ thống
@@ -127,15 +125,5 @@ Browser ←WS→ FastAPI/main.py ←stdio MCP→ sheets_server.py → Google She
               Gemini 2.5 Flash
 ```
 
----
-
-## 🛠️ Troubleshooting
-
-| Lỗi | Nguyên nhân | Cách fix |
-|---|---|---|
-| `GEMINI_API_KEY not set` | Thiếu `.env` | Copy `.env.example` → `.env` và điền key |
-| `Service account JSON không tìm thấy` | Thiếu credentials | Đặt file vào `config/google-service-account.json` |
-| `Jira API lỗi 401` | Sai token hoặc email | Kiểm tra `JIRA_EMAIL` và `JIRA_API_TOKEN` trong `.env` |
-| `Spreadsheet not found` | Chưa share | Share spreadsheet với `client_email` của service account |
 | `WebSocket 403` | Sai route | Đảm bảo HTML kết nối đến `ws://localhost:3000/ws` |
 | `call_tool() takes 1 positional argument` | Sai MCP SDK version | Cập nhật handler: `async def call_tool(name: str, arguments: dict)` |
